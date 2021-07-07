@@ -1,0 +1,144 @@
+<!DOCTYPE html><html lang=en><head><meta charset=utf-8><meta http-equiv=X-UA-Compatible content="IE=edge"><meta name=viewport content="width=device-width,initial-scale=1"><meta http-equiv=X-UA-Compatible content="IE=edge,chrome=1"><meta name=viewport content="width=device-width,initial-scale=1,maximum-scale=1,minimum-scale=1,viewport-fit=cover"><link rel=icon href=company/king/favicon.ico><title>uniApp</title><style type=text/css>body {
+      overflow: hidden;
+    }
+
+    /* 自定义滚动条 */
+    ::-webkit-scrollbar {
+      width: 8px;
+      height: 8px;
+    }
+
+    ::-webkit-scrollbar-track {
+      border-radius: 0px;
+      background: transparent;
+    }
+
+    ::-webkit-scrollbar-thumb {
+      border-radius: 5px;
+      background: #bfbfbf;
+    }
+
+    ::-webkit-scrollbar-thumb:hover {
+      border-radius: 5px;
+      background: #4a9cee;
+    }
+
+    /* #loading-mask{position:fixed;left:0;top:0;height:100%;width:100%;background:#fff;user-select:none;z-index:9999;overflow:hidden}.loading-wrapper{position:absolute;top:50%;left:50%;transform:translate(-50%,-100%)}.loading-dot{animation:antRotate 1.2s infinite linear;transform:rotate(45deg);position:relative;display:inline-block;font-size:64px;width:64px;height:64px;box-sizing:border-box}.loading-dot i{width:22px;height:22px;position:absolute;display:block;background-color:#1890ff;border-radius:100%;transform:scale(.75);transform-origin:50% 50%;opacity:.3;animation:antSpinMove 1s infinite linear alternate}.loading-dot i:nth-child(1){top:0;left:0}.loading-dot i:nth-child(2){top:0;right:0;-webkit-animation-delay:.4s;animation-delay:.4s}.loading-dot i:nth-child(3){right:0;bottom:0;-webkit-animation-delay:.8s;animation-delay:.8s}.loading-dot i:nth-child(4){bottom:0;left:0;-webkit-animation-delay:1.2s;animation-delay:1.2s}@keyframes antRotate{to{-webkit-transform:rotate(405deg);transform:rotate(405deg)}}@-webkit-keyframes antRotate{to{-webkit-transform:rotate(405deg);transform:rotate(405deg)}}@keyframes antSpinMove{to{opacity:1}}@-webkit-keyframes antSpinMove{to{opacity:1}} */
+    /* .loader {position:fixed;left:0;top:0;height:100%;width:100%;background:#fff;user-select:none;z-index:9999;overflow:hidden}.ball-pulse-sync{position:absolute;top:50%;left:50%;transform:translate(-50%,-100%)}.ball-pulse-sync > div {background-color: #fff;width: 18px;height: 18px;border-radius: 100%;margin: 2px;animation-fill-mode: both;display: inline-block;}.ball-pulse-sync > div:nth-child(1) {animation: ball-pulse-sync 0.6s 0.07s infinite ease-in-out;}.ball-pulse-sync > div:nth-child(2) {animation: ball-pulse-sync 0.6s 0.14s infinite ease-in-out;}.ball-pulse-sync > div:nth-child(3) {animation: ball-pulse-sync 0.6s 0.21s infinite ease-in-out;}@keyframes ball-pulse-sync{33%{transform: translateY(10px);}66% {transform: translateY(-10px);}100% {transform: translateY(0);}} */
+    .loader {
+      position: fixed;
+      left: 0;
+      top: 0;
+      height: 100%;
+      width: 100%;
+      background: #fff;
+      user-select: none;
+      z-index: 9999;
+      overflow: hidden;
+    }
+
+    .pacman {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -100%);
+    }
+
+    .pacman>div:nth-child(2) {
+      -webkit-animation: pacman-balls 1s 0s infinite linear;
+      animation: pacman-balls 1s 0s infinite linear;
+    }
+
+    .pacman>div:nth-child(3) {
+      -webkit-animation: pacman-balls 1s 0.33s infinite linear;
+      animation: pacman-balls 1s 0.33s infinite linear;
+    }
+
+    .pacman>div:nth-child(4) {
+      -webkit-animation: pacman-balls 1s 0.66s infinite linear;
+      animation: pacman-balls 1s 0.66s infinite linear;
+    }
+
+    .pacman>div:nth-child(5) {
+      -webkit-animation: pacman-balls 1s 0.99s infinite linear;
+      animation: pacman-balls 1s 0.99s infinite linear;
+    }
+
+    .pacman>div:first-of-type {
+      width: 0px;
+      height: 0px;
+      border-right: 25px solid transparent;
+      border-top: 25px solid #4a9cee;
+      border-left: 25px solid #4a9cee;
+      border-bottom: 25px solid #4a9cee;
+      border-radius: 25px;
+      animation: rotate_pacman_half_up 0.5s 0s infinite;
+    }
+
+    .pacman>div:nth-child(2) {
+      width: 0px;
+      height: 0px;
+      border-right: 25px solid transparent;
+      border-top: 25px solid #4a9cee;
+      border-left: 25px solid #4a9cee;
+      border-bottom: 25px solid #4a9cee;
+      border-radius: 25px;
+      animation: rotate_pacman_half_down 0.5s 0s infinite;
+      margin-top: -50px;
+    }
+
+    .pacman>div:nth-child(3),
+    .pacman>div:nth-child(4),
+    .pacman>div:nth-child(5),
+    .pacman>div:nth-child(6) {
+      background-color: #fff;
+      width: 15px;
+      height: 15px;
+      border-radius: 100%;
+      margin: 2px;
+      width: 10px;
+      height: 10px;
+      position: absolute;
+      transform: translate(0, -6.25px);
+      top: 25px;
+      left: 100px;
+    }
+
+    @keyframes pacman-balls {
+      75% {
+        opacity: 0.7;
+      }
+
+      100% {
+        -webkit-transform: translate(-100px, -6.25px);
+        transform: translate(-100px, -6.25px);
+      }
+    }
+
+    @keyframes rotate_pacman_half_up {
+      0% {
+        transform: rotate(270deg);
+      }
+
+      50% {
+        transform: rotate(360deg);
+      }
+
+      100% {
+        transform: rotate(270deg);
+      }
+    }
+
+    @keyframes rotate_pacman_half_down {
+      0% {
+        transform: rotate(90deg);
+      }
+
+      50% {
+        transform: rotate(0deg);
+      }
+
+      100% {
+        transform: rotate(90deg);
+      }
+    }</style><link href=css/chunk-04a2374e.e923f9fe.css rel=prefetch><link href=css/chunk-0bda942b.86e2ec1c.css rel=prefetch><link href=css/chunk-26f95269.732825c6.css rel=prefetch><link href=css/chunk-3057e8dc.202d06e2.css rel=prefetch><link href=css/chunk-39586f23.c69a0e1f.css rel=prefetch><link href=css/chunk-3d250320.3725c6fb.css rel=prefetch><link href=css/chunk-40b79928.6a08d43a.css rel=prefetch><link href=css/chunk-4ef04fd3.d7c4aa54.css rel=prefetch><link href=css/chunk-4f9e1764.033b45a5.css rel=prefetch><link href=css/chunk-599c86e0.5e07d3f6.css rel=prefetch><link href=css/chunk-5c21791c.a75b1e58.css rel=prefetch><link href=css/chunk-6f1fc10e.7eab3c35.css rel=prefetch><link href=css/chunk-c84f2d94.abe7d3c0.css rel=prefetch><link href=css/chunk-d8909a9e.47a71c9a.css rel=prefetch><link href=css/chunk-dbb84814.4c246147.css rel=prefetch><link href=css/chunk-f1e166d0.b99725ab.css rel=prefetch><link href=js/chunk-04a2374e.86229b08.js rel=prefetch><link href=js/chunk-0bda942b.05cb2aaf.js rel=prefetch><link href=js/chunk-26f95269.f25ed9cf.js rel=prefetch><link href=js/chunk-30042fa5.cc3629da.js rel=prefetch><link href=js/chunk-3057e8dc.9a89c63c.js rel=prefetch><link href=js/chunk-39586f23.ea49130e.js rel=prefetch><link href=js/chunk-3d250320.01660e26.js rel=prefetch><link href=js/chunk-40b79928.d5946a25.js rel=prefetch><link href=js/chunk-4ef04fd3.7f68797a.js rel=prefetch><link href=js/chunk-4f9e1764.4c04a118.js rel=prefetch><link href=js/chunk-599c86e0.959fe433.js rel=prefetch><link href=js/chunk-5c21791c.608ec142.js rel=prefetch><link href=js/chunk-6f1fc10e.0d9721ef.js rel=prefetch><link href=js/chunk-71c6abf2.3057dee4.js rel=prefetch><link href=js/chunk-c84f2d94.0ae00830.js rel=prefetch><link href=js/chunk-d8909a9e.4ee193cf.js rel=prefetch><link href=js/chunk-dbb84814.4622f0bf.js rel=prefetch><link href=js/chunk-f1e166d0.9ddf8b35.js rel=prefetch><link href=css/app.b2abdbad.css rel=preload as=style><link href=css/chunk-vendors.02d18299.css rel=preload as=style><link href=js/app.d4c7987b.js rel=preload as=script><link href=js/chunk-vendors.feba7b49.js rel=preload as=script><link href=css/chunk-vendors.02d18299.css rel=stylesheet><link href=css/app.b2abdbad.css rel=stylesheet></head><body><noscript><strong>We're sorry but ops-web doesn't work properly without JavaScript enabled. Please enable it to continue.</strong></noscript><div id=app><div class=loader><div class="loader-inner pacman"><div></div><div></div><div style="background-color: #4a9cee;"></div><div style="background-color:  #4a9cee;"></div><div style="background-color:  #4a9cee;"></div></div></div></div><script src=./config.js?2020060301></script><script src=./jQuery.js></script><script src=./init.js></script><script src=./emm.js></script><script src=./hostConfig.js?2020060301></script><script src=js/chunk-vendors.feba7b49.js></script><script src=js/app.d4c7987b.js></script></body></html>
